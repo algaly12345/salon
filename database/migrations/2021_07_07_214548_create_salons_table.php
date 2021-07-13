@@ -21,10 +21,12 @@ class CreateSalonsTable extends Migration
             $table->string('longitude');
             $table->string('latitude');
             $table->string('price');
+            $table->string('rating');
             $table->string('data_id');
             $table->integer('owner_id');
             $table->string('salon_email');
             $table->integer('category_id');
+
             $table->timestamps();
         });
     }
