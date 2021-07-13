@@ -23,7 +23,7 @@ function get_default_lang(){
 
 
 function uploadImage($folder,$image){
-    $image->store('/', $folder);
-    $filename = $image->hashName();
-    return  $filename;
+  //  $image->store('/', $folder);
+  //  $filename = $image->hashName();
+    return "";// $filename;
 }
