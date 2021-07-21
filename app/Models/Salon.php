@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\DateBook;
 use Illuminate\Database\Eloquent\Model;
 
 class Salon extends Model
@@ -38,4 +39,11 @@ class Salon extends Model
     public function salonSpecialists(){
         return $this -> hasMany(Specialist::class,'salon_id','id');
     }
+
+    public function workDays(){
+        return $this -> hasMany(DayBooking::class,'salon_id','id');
+    }
+
+
+
 }

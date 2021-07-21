@@ -22,7 +22,7 @@ class SalonController extends Controller
 
 
     public function  getSalonBayCategoryID(Request $request){
-        $salon = Salon::Selection()->where('category_id', $request->id)->with('salonImages')->with('salonServices')->with('salonOffers')->get();
+        $salon = Salon::Selection()->where('category_id', $request->id)->with('workDays')->with('salonImages')->with('salonServices')->with('salonOffers')->get();
         if (!$salon)
             return $this->returnError('001', 'هذا القسم غير موجد');
         return response()->json($salon);
@@ -52,7 +52,7 @@ class SalonController extends Controller
 
 
 
-        )->join("saved_items", "salons.id", "=", "saved_items.salon_id")->where('salon_id', $request->salon_id)->where('saved_items.user_id',Auth::user()->id)->with('salonImages')->with('salonServices')->with('salonOffers')->get();
+        )->join("saved_items", "salons.id", "=", "saved_items.salon_id")->where('salon_id', $request->salon_id)->where('saved_items.user_id',Auth::user()->id)->with('workDays')->with('salonImages')->with('salonServices')->with('salonOffers')->get();
 
         return response()->json($evaluation);
     }
@@ -69,7 +69,7 @@ class SalonController extends Controller
 
 
 
-        )->join("views", "salons.id", "=", "views.salon_id")->where('salon_id', $request->salon_id)->where('views.user_id',Auth::user()->id)->with('salonImages')->with('salonServices')->with('salonOffers')->get();
+        )->join("views", "salons.id", "=", "views.salon_id")->where('salon_id', $request->salon_id)->where('views.user_id',Auth::user()->id)->with('workDays')->with('salonImages')->with('salonServices')->with('salonOffers')->get();
 
         return response()->json($evaluation);
     }
