@@ -28,6 +28,7 @@ Route::group(['middleware'=>['auth:api'],'namespace'=>'Api'],function (){
     Route::get('/user','UserController@current');
     Route::get('get-save-item','SalonController@getSaveIten');
     Route::get('get-view-user','SalonController@getViewUser');
+
 });
 Route::post('login','ApiAuthController@login');
 Route::post('create','UserController@register');

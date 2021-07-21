@@ -15,6 +15,6 @@ class Categories extends Model
     public function scopeSelection($query)
     {
 
-        return $query->select( 'name','image_url');
+        return $query->select('id' ,'name','image_url');
     }
 }

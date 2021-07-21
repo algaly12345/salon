@@ -18,6 +18,7 @@ class CreateDayBookingsTable extends Migration
             $table->date('day');
             $table->string('from');
             $table->string('to');
+            $table->integer('salon_id');
             $table->timestamps();
         });
     }

@@ -24,6 +24,11 @@ class Salon extends Model
         return $this -> hasMany(SalonImage::class,'salon_id','id');
     }
 
+    public function bookingdays(){
+
+        return $this -> hasMany(DayBooking::class,'salon_id','id');
+    }
+
 
     public function salonServices(){
         return $this -> hasMany(Services::class,'salon_id','id');

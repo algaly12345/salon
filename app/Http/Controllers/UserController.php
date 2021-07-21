@@ -80,22 +80,24 @@ class UserController extends Controller
                 'name' => 'required',
                 'email'    => 'unique:users|required',
                 'password' => 'required',
+                'phone' => 'required',
 
             ];
 
-            $input     = $data->only('name', 'email','password');
+            $input     = $data->only('name', 'email','password','phone');
             $validator = Validator::make($input, $rules);
 
             if ($validator->fails()) {
                 return response()->json(['success' => 'exist']);
             }
 
-          //  DB::beginTransaction();
+            //  DB::beginTransaction();
             $verification = [];
             $user = User::create([
                 'name'=>$data['name'],
                 'email'=>$data['email'],
                 'imageUrl'=>'ImageUrl',
+                'phone'=>'phone',
                 'password'=>Hash::make($data['password']),
             ]);
 
@@ -116,7 +118,7 @@ class UserController extends Controller
             //send to user  mobile
         }catch(\Exception $ex){
             return $ex;
-           // DB::rollback();
+            // DB::rollback();
         }
 
     }
@@ -146,13 +148,13 @@ class UserController extends Controller
 
     public function rate(Request $request)
     {
-        $order = new Evaluation();
-        $order->user_id = auth()->guard('api')->user()->id;
-        $order->salon_id = $request->salon_id;
-        $order->rating = $request->rating;
-        $order->content =$request->contents;
+        $rate = new Evaluation();
+        $rate->user_id =auth()->guard('api')->user()->id;
+        $rate->salon_id = $request->salon_id;
+        $rate->rating = $request->rating;
+        $rate->content =$request->contents;
 
-        $order->save();
+        $rate->save();
         return response()->json(['success' => 'success']);
 
     }
@@ -160,12 +162,12 @@ class UserController extends Controller
 
     public function views(Request $request)
     {
-        $order = new Views();
-        $order->user_id = auth()->guard('api')->user()->id;
-        $order->salon_id = $request->salon_id;
+        $view = new Views();
+        $view->user_id = auth()->guard('api')->user()->id;
+        $view->salon_id = $request->salon_id;
 
 
-        $order->save();
+        $view->save();
         return response()->json(['success' => 'success']);
 
     }
