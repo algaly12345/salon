@@ -36,7 +36,7 @@ class Salon extends Model
     }
 
 
-    public function salonSpecialists(){
+    public function speciaLists(){
         return $this -> hasMany(Specialist::class,'salon_id','id');
     }
 
