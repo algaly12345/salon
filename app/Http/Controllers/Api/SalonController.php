@@ -52,7 +52,7 @@ class SalonController extends Controller
 
 
 
-        )->join("saved_items", "salons.id", "=", "saved_items.salon_id")->where('salon_id', $request->salon_id)->where('saved_items.user_id',Auth::user()->id)->with('workDays')->with('salonImages')->with('salonServices')->with('salonOffers')->get();
+        )->join("saved_items", "salons.id", "=", "saved_items.salon_id")->where('salon_id', $request->salon_id)->where('saved_items.user_id',Auth::user()->id)->with('workDays')->with('salonImages')->with('salonServices')->with('salonOffers')->with('salonSpecialists')->get();
 
         return response()->json($evaluation);
     }
@@ -69,7 +69,7 @@ class SalonController extends Controller
 
 
 
-        )->join("views", "salons.id", "=", "views.salon_id")->where('salon_id', $request->salon_id)->where('views.user_id',Auth::user()->id)->with('workDays')->with('salonImages')->with('salonServices')->with('salonOffers')->get();
+        )->join("views", "salons.id", "=", "views.salon_id")->where('salon_id', $request->salon_id)->where('views.user_id',Auth::user()->id)->with('workDays')->with('salonImages')->with('salonServices')->with('salonOffers')->with('salonSpecialists')->get();
 
         return response()->json($evaluation);
     }
