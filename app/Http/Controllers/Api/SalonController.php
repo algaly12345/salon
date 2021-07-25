@@ -22,7 +22,7 @@ class SalonController extends Controller
 
 
     public function  getSalonBayCategoryID(Request $request){
-        $salon = Salon::Selection()->where('category_id', $request->id)->with('workDays')->with('salonImages')->with('salonServices')->with('salonOffers')->get();
+        $salon = Salon::Selection()->where('category_id', $request->id)->with('workDays')->with('salonImages')->with('salonServices')->with('salonOffers')->with('salonSpecialists')->get();
         if (!$salon)
             return $this->returnError('001', 'هذا القسم غير موجد');
         return response()->json($salon);
